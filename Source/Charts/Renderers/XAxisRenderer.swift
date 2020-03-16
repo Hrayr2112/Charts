@@ -158,9 +158,9 @@ open class XAxisRenderer: AxisRendererBase
             || xAxis.labelPosition == .bottomInside
             || xAxis.labelPosition == .bothSided
         {
-            _axisLineSegmentsBuffer[0].x = viewPortHandler.contentLeft
+            _axisLineSegmentsBuffer[0].x = viewPortHandler.contentLeft - 20
             _axisLineSegmentsBuffer[0].y = viewPortHandler.contentBottom
-            _axisLineSegmentsBuffer[1].x = viewPortHandler.contentRight
+            _axisLineSegmentsBuffer[1].x = viewPortHandler.contentRight + 20
             _axisLineSegmentsBuffer[1].y = viewPortHandler.contentBottom
             context.strokeLineSegments(between: _axisLineSegmentsBuffer)
         }
@@ -239,6 +239,10 @@ open class XAxisRenderer: AxisRendererBase
                         let width = labelns.boundingRect(with: labelMaxSize, options: .usesLineFragmentOrigin, attributes: labelAttrs, context: nil).size.width
                         position.x += width / 2.0
                     }
+                }
+                
+                if position.x < 20 {
+                    position.x = 20
                 }
                 
                 drawLabel(context: context,

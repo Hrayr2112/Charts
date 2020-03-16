@@ -153,7 +153,9 @@ open class YAxisRenderer: AxisRendererBase
                 text: text,
                 point: CGPoint(x: fixedPosition + xOffset, y: positions[i].y + offset),
                 align: textAlign,
-                attributes: [.font: labelFont, .foregroundColor: labelTextColor]
+                attributes: [.font: labelFont,
+                             .foregroundColor: labelTextColor,
+                             .backgroundColor: UIColor.white.withAlphaComponent(0.7)]
             )
         }
     }
